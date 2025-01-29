@@ -1,6 +1,7 @@
 - id: extract-exercise-list
   name: Extract exercise list from any Markdown in docs/ to docs/exercises.md
-  entry: uv tool run extract-exercise-list
+  # Entry should be the script extract-exercise-list in the root of the repository
+  entry: extract-exercise-list
   language: python
   files: ^docs/
   types: [markdown]
