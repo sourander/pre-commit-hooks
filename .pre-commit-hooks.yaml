@@ -3,4 +3,4 @@
   entry: uv tool run extract-exercise-list
   language: python
   files: ^docs/
-  types: [md]
+  types: [markdown]
