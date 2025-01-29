@@ -1,0 +1,6 @@
+- id: extract-exercise-list
+  name: Extract exercise list from any Markdown in docs/ to docs/exercises.md
+  entry: uv tool run extract-exercise-list
+  language: python
+  files: ^docs/
+  types: [md]

@@ -1,0 +1,12 @@
+[project]
+name = "pre-commit-hooks"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "uv>=0.5.25",
+]
+
+[project.scripts]
+extract-exercise-list = "src.extract_exercise_list.main:cli"
