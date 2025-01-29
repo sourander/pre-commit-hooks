@@ -26,6 +26,10 @@ Now, you may run the pre-commit hooks using the following command:
 # To target all files, whether they are staged or not
 uv run pre-commit --all-files
 
+# Alternatively, you can add it as a dev decependency and run locally
+uv add git+https://github.com/sourander/pre-commit-hooks --dev
+uv run extract-exercise-list
+
 # To run it normally, simply add and commit files
 git add .
 git commit -m "Add some changes"
