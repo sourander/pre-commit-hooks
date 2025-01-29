@@ -5,3 +5,4 @@
   language: python
   files: ^docs/
   types: [markdown]
+  exclude: ^docs/exercises.md
