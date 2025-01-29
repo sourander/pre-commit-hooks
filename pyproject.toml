@@ -10,3 +10,7 @@ dependencies = [
 
 [project.scripts]
 extract-exercise-list = "src.extract_exercise_list.main:cli"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
