@@ -82,8 +82,14 @@ def create_content(directory: Path) -> str:
     return file_prefix + content_as_code_block
 
 def write_content(content: str, destination: Path):
-    with open(destination, "w") as f:
-        f.write(content)
+    """Write the content to a file, but only if the content is changed."""
+    old = destination.read_text(encoding="utf-8") if destination.exists() else ""
+
+    if content == old:
+        print("No changes detected, skipping writing the file.")
+        return
+    
+    destination.write_text(content, encoding="utf-8")
 
 if __name__ == "__main__":
     md_content = create_content(Path(PATH_TO_SEARCH))
