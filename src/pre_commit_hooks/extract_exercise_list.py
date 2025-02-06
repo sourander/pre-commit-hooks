@@ -13,27 +13,29 @@ class MarkdownWithExercises:
     heading: str
     exercises: list[str]
 
+
+def extract_priority(content: str) -> int:
+    # Keep only the content between rows --- and ---
+    metadata = re.search(r"---\n(.+?)\n---", content, re.DOTALL)
+    if metadata:
+        metadata = metadata.group(1)
+        priority = re.search(r"priority: (\d+)", metadata)
+        return int(priority.group(1)) if priority else 999
+    return 999
+
+def extract_heading(content: str) -> str:
+    # Remove code blocks to avoid comment ending up as a heading
+    content = re.sub(r"```.*?```", "", content, flags=re.DOTALL)
+    headings = re.search(r"^# (.+)", content, re.MULTILINE)
+    return headings.group(1) if headings else "No heading found"
+
+def extract_exercises(content: str) -> list[str]:
+    pattern = r'^(?:!!!|\?\?\?) question\s*"(.*Tehtävä.*)"\s*'
+    exercises = re.findall(pattern, content, flags=re.IGNORECASE | re.MULTILINE)
+    return exercises
+
 def extract_md_exercises(file: Path) -> MarkdownWithExercises | None:
 
-    def extract_priority(content: str) -> int:
-        # Keep only the content between rows --- and ---
-        metadata = re.search(r"---\n(.+?)\n---", content, re.DOTALL)
-        if metadata:
-            metadata = metadata.group(1)
-            priority = re.search(r"priority: (\d+)", metadata)
-            return int(priority.group(1)) if priority else 999
-        return 999
-
-    def extract_heading(content: str) -> str:
-        headings = re.search(r"^# (.+)", content, re.MULTILINE)
-        return headings.group(1) if headings else "No heading found"
-
-    def extract_exercises(content: str) -> list[str]:
-        pattern = r'^!!! question\s*"(.*Tehtävä.*)"\s*'
-        exercises = re.findall(pattern, content, flags=re.IGNORECASE | re.MULTILINE)
-        return exercises
-
-    
     content = file.read_text()
     priority = extract_priority(content)
     heading = extract_heading(content)
