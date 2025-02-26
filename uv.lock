@@ -1,4 +1,5 @@
 version = 1
+revision = 1
 requires-python = ">=3.12"
 
 [[package]]
@@ -39,7 +40,7 @@ wheels = [
 
 [[package]]
 name = "pre-commit-hooks"
-version = "0.3.0"
+version = "0.4.0"
 source = { editable = "." }
 
 [package.dev-dependencies]

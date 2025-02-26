@@ -9,7 +9,7 @@ Use must first create the `.pre-commit-config.yaml` file in the root of the repo
 ```yaml
 repos:
   - repo: https://github.com/sourander/pre-commit-hooks
-    rev: v0.1.0
+    rev: v0.4.0
     hooks:
       - id: extract-exercise-list
 ```
@@ -52,6 +52,9 @@ sed -i 's/0.1.0/0.2.0/g' pyproject.toml
 
 # Make sure the lock file is updated
 uv lock --upgrade
+
+# Run tests
+uv run pytest
 
 # Add changes to git
 git add .

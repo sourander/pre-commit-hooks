@@ -5,3 +5,4 @@
   files: ^docs/
   types: [markdown]
   exclude: ^docs/exercises.md
+  pass_filenames: false

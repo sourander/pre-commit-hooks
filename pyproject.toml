@@ -1,7 +1,7 @@
 [project]
 name = "pre-commit-hooks"
-version = "0.3.0"
-description = "Add your description here"
+version = "0.4.0"
+description = "Collection of pre-commit hooks used in gh:sourander repos"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
